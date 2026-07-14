@@ -14,13 +14,28 @@ if ! grep -Fq 'barcode scanning and damage detection' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\newcommand{\tech}[1]{\textbf{Technologies:} #1\par\vspace{0.35em}}' main.tex; then
-  echo 'Missing post-technology spacing' >&2
+if ! awk 'previous == "\\newpage" && $0 == "\\cvsection{Education}" { found = 1 } { previous = $0 } END { exit !found }' main.tex; then
+  echo 'Education must start on a new page' >&2
   status=1
 fi
 
-if ! awk 'previous == "\\newpage" && $0 == "\\cvsection{Education}" { found = 1 } { previous = $0 } END { exit !found }' main.tex; then
-  echo 'Education must start on a new page' >&2
+if ! grep -Fq '\newcommand{\cvheader}[1]{%' main.tex; then
+  echo 'Missing centered header macro' >&2
+  status=1
+fi
+
+if ! grep -Fq '\textbf{#1} \;|\; #2 \;|\; #3\hfill\textbf{#4}\par' main.tex; then
+  echo 'Missing single-line experience header' >&2
+  status=1
+fi
+
+if ! grep -Fq '\vspace{-0.25em}%' main.tex; then
+  echo 'Missing compact bullet-list spacing' >&2
+  status=1
+fi
+
+if ! grep -Fq '\rule{0.32\linewidth}{0.25pt}' main.tex; then
+  echo 'Missing short technology divider' >&2
   status=1
 fi
 

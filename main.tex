@@ -8,34 +8,46 @@
 \setlength{\parindent}{0pt}
 \hypersetup{pdfauthor={Samuele Guerrini}, pdftitle={Samuele Guerrini - Senior Software Engineer}}
 
+\newcommand{\cvheader}[1]{%
+  \begin{center}
+  #1
+  \end{center}
+}
 \newcommand{\cvsection}[1]{%
   \par\vspace{0.8em}%
   \noindent{\large\bfseries #1}\par
   \vspace{0.15em}\hrule\vspace{0.35em}%
 }
 \newcommand{\role}[4]{%
-  \textbf{#1} \hfill \textbf{#4}\\
-  #2 \;|\; #3
+  \noindent\textbf{#1} \;|\; #2 \;|\; #3\hfill\textbf{#4}\par
 }
-\newcommand{\tech}[1]{\textbf{Technologies:} #1\par\vspace{0.35em}}
+\newcommand{\tech}[1]{%
+  \textbf{Technologies:} #1\par
+  \vspace{0.25em}%
+  \noindent\rule{0.32\linewidth}{0.25pt}\par
+  \vspace{0.45em}%
+}
 \newenvironment{cvitems}{%
+  \vspace{-0.25em}%
   \begin{itemize}
   \setlength{\leftmargin}{1.15em}
   \setlength{\itemsep}{0pt}
-  \setlength{\topsep}{0.2em}
+  \setlength{\topsep}{0pt}
   \setlength{\partopsep}{0pt}
   \setlength{\parsep}{0pt}%
 }{%
-  \end{itemize}
+  \end{itemize}\vspace{-0.1em}%
 }
 
 \begin{document}
 
-{\LARGE\textbf{Samuele Guerrini}}\\[-0.1em]
-{\large Senior Software Engineer}\\[0.25em]
-Pisa, Italy \;|\; \href{tel:+393290159627}{(+39) 329 015 9627} \;|\; \href{mailto:sguerrini97@protonmail.com}{sguerrini97@protonmail.com}\\
-LinkedIn: \href{https://www.linkedin.com/in/guerrinisamuele/}{linkedin.com/in/guerrinisamuele} \;|\;
-GitHub: \href{https://github.com/sguerrini97}{github.com/sguerrini97}
+\cvheader{%
+  {\LARGE\textbf{Samuele Guerrini}}\\[-0.1em]
+  {\large Senior Software Engineer}\\[0.25em]
+  Pisa, Italy \;|\; \href{tel:+393290159627}{(+39) 329 015 9627} \;|\; \href{mailto:sguerrini97@protonmail.com}{sguerrini97@protonmail.com}\\
+  LinkedIn: \href{https://www.linkedin.com/in/guerrinisamuele/}{linkedin.com/in/guerrinisamuele} \;|\;
+  GitHub: \href{https://github.com/sguerrini97}{github.com/sguerrini97}
+}
 
 \cvsection{Professional Summary}
 Senior Software Engineer with experience delivering scalable backend systems, data pipelines, and cloud-native services. Strong in Go, TypeScript, distributed architectures, and technical leadership, with domain experience in healthcare data processing and payments.
