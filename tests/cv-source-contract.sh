@@ -34,8 +34,18 @@ if ! grep -Fq '\vspace{-0.25em}%' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\rule{0.32\linewidth}{0.25pt}' main.tex; then
-  echo 'Missing short technology divider' >&2
+if ! grep -Fq '\makebox[\linewidth][c]{\rule{0.32\linewidth}{0.25pt}}\par' main.tex; then
+  echo 'Missing centered technology divider' >&2
+  status=1
+fi
+
+if ! grep -Fq '\newcommand{\techlast}[1]{%' main.tex; then
+  echo 'Missing final-experience technology macro' >&2
+  status=1
+fi
+
+if ! grep -Fq '\techlast{.NET, C\#, Python, Java, Microsoft SQL Server, MySQL, Docker, Git, AWS}' main.tex; then
+  echo 'Last experience must not have a technology divider' >&2
   status=1
 fi
 

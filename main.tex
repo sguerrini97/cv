@@ -24,7 +24,11 @@
 \newcommand{\tech}[1]{%
   \textbf{Technologies:} #1\par
   \vspace{0.25em}%
-  \noindent\rule{0.32\linewidth}{0.25pt}\par
+  \noindent\makebox[\linewidth][c]{\rule{0.32\linewidth}{0.25pt}}\par
+  \vspace{0.45em}%
+}
+\newcommand{\techlast}[1]{%
+  \textbf{Technologies:} #1\par
   \vspace{0.45em}%
 }
 \newenvironment{cvitems}{%
@@ -89,7 +93,7 @@ Senior Software Engineer with experience delivering scalable backend systems, da
   \item Developed a vehicle access-control and parking-payment platform from inception through deployment.
   \item Delivered enterprise applications for shipping and customs operators, including Italian electronic-invoicing compliance, plus Android inventory applications with barcode scanning and damage detection.
 \end{cvitems}
-\tech{.NET, C\#, Python, Java, Microsoft SQL Server, MySQL, Docker, Git, AWS}
+\techlast{.NET, C\#, Python, Java, Microsoft SQL Server, MySQL, Docker, Git, AWS}
 
 \cvsection{Selected Open Source Contributions}
 \textbf{ClickHouse} - \href{https://github.com/ClickHouse/ClickHouse/pull/66214}{Incremental password-protected backups} (Jul 2024)\\
