@@ -1,121 +1,88 @@
-% Document definition
-\documentclass[11pt,a4paper,sans]{moderncv}
+\documentclass[10pt,a4paper]{article}
 
-% moderncv options
-\moderncvcolor{blue} % CV color
-\moderncvstyle{classic} % CV theme
-
-% Encoding
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[margin=0.62in]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{parskip}
 
-% Page margins
-\usepackage[scale=0.8]{geometry}
-\recomputelengths
+\definecolor{accent}{HTML}{1F4E79}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.15em, nosep, topsep=0.2em}
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{0.8em}{0.35em}
+\hypersetup{pdfauthor={Samuele Guerrini}, pdftitle={Samuele Guerrini - Senior Software Engineer}}
 
-% Personal information
-\firstname{Samuele}
-\familyname{Guerrini}
-\title{Curriculum Vitae}
-\address{}{Pisa (PI)}{Italy}
-\mobile{(+39) 329 015 9627}
-\email{sguerrini97@protonmail.com}
-\extrainfo{
-    \faGithub \href{https://github.com/sguerrini97}{sguerrini97} \,
-    \faLinkedin \href{https://www.linkedin.com/in/guerrinisamuele/}{Samuele Guerrini}
+\newcommand{\role}[4]{%
+  \textbf{#1} \hfill \textbf{#4}\\
+  #2 \;|\; #3
 }
-\photo[70pt][0.4pt]{pictures/me.jpg}
+\newcommand{\tech}[1]{\textbf{Technologies:} #1}
 
 \begin{document}
-\maketitle
 
-% Summary
-\section{Summary}
-\cvitem{}{
-    Experienced backend developer and tech lead specializing in scalable architectures and high-volume data processing. Strong background in microservices, cloud technologies, and leading technical teams to deliver robust enterprise solutions.
-}
+{\LARGE\textbf{Samuele Guerrini}}\\[-0.1em]
+{\large Senior Software Engineer}\\[0.25em]
+Pisa, Italy \;|\; +39 329 015 9627 \;|\; \href{mailto:sguerrini97@protonmail.com}{sguerrini97@protonmail.com}\\
+LinkedIn: \href{https://www.linkedin.com/in/guerrinisamuele/}{linkedin.com/in/guerrinisamuele} \;|\;
+GitHub: \href{https://github.com/sguerrini97}{github.com/sguerrini97}
 
-% Work experience
-\section{Work experience}
-\cventry{Mar\,2026~-~present}{Software Engineer}{Ema Health}{Lucca, Italy}{}{
-    \begin{itemize}
-        \item Elevated code quality, architecture, and team velocity through senior engineering leadership and robust typed backend patterns
-        \item Designed and implemented a multi-tenant RBAC system from scratch, enabling secure role-scoped authentication across all tenants
-        \item Engineered privacy-preserving data pipelines for medical document processing, compliant with healthcare data protection regulations
-        \item Developed an OCR pipeline with locally deployed LLMs to extract structured results from blood analysis reports
-    \end{itemize}\leavevmode
-    \openup .2em
-    Technologies:\,TypeScript, Nest.js, Node.js, Go, MongoDB, Flutter, Docker, GCP, Git
-}
-\openup .4em
-\cventry{Dec\,2023~-~Mar\,2026}{Backend Developer - Tech lead}{Defenda Solutions}{Lucca, Italy}{}{
-    \begin{itemize}
-        \item Led backend development for large-scale data processing, handling raw data parsing, import, and analysis of massive datasets for customer-facing insights
-        \item Architected technical solutions and advised on technology stack selection for new projects, ensuring scalability and performance
-        \item Drove implementation of data pipelines and analytics infrastructure using Go, Elasticsearch, ClickHouse, and MongoDB
-    \end{itemize}\leavevmode
-    \openup .2em
-    Technologies:\,Go, Docker, Elasticsearch, ClickHouse, MongoDB, MySQL, Python, Git, OSINT, PHP
-}
-\openup .4em
-\cventry{Apr\,2022~-~Dec\,2023}{Backend Developer}{Roomless}{Pisa, Italy}{}{
-    \begin{itemize}
-        \item Led migration to serverless microservice architecture, improving scalability and reducing infrastructure costs
-        \item Built automated invoicing system supporting paper and e-invoices; integrated payments and refunds with Stripe and PayPal, including Stripe Connect for supplier payments
-        \item Developed multi-channel notification system (email, SMS, Telegram) for internal and customer communications
-    \end{itemize}\leavevmode
-    \openup .2em
-    Used technologies:\,TypeScript, Node.js, Nest.js, Git, Docker, MySQL, Cypress, AWS, Serverless
-}
-\openup .4em
-\cventry{Jul\,2018~-~Apr\,2022}{Software Developer}{B\&B Software}{Province of Pisa, Italy}{}{
-    \begin{itemize}
-        \item Developed vehicle access control and parking payment platform from inception to deployment
-        \item Enhanced enterprise applications for shipping and customs operators; integrated Italian e-invoicing compliance
-        \item Built Android applications for inventory management with barcode scanning and damage detection
-    \end{itemize}\leavevmode
-    \openup .2em
-    Used technologies:\,.NET, C\#, Python, Java, MS SQL, MySQL, Docker, Git, AWS
-}
+\section{Professional Summary}
+Senior Software Engineer with experience delivering scalable backend systems, data pipelines, and cloud-native services. Strong in Go, TypeScript, distributed architectures, and technical leadership, with domain experience in healthcare data processing and payments.
 
-\pagebreak
+\section{Technical Skills}
+\textbf{Languages:} Go, TypeScript, Python, C\#, Java, PHP\\
+\textbf{Backend \& Architecture:} Node.js, NestJS, .NET, Microservices, REST APIs, RBAC, Data Pipelines\\
+\textbf{Data:} MongoDB, MySQL, Microsoft SQL Server, ClickHouse, Elasticsearch\\
+\textbf{Cloud \& Delivery:} Amazon Web Services (AWS), Google Cloud Platform (GCP), Docker, Serverless, Git, CI/CD\\
+\textbf{Domains:} Healthcare Data Processing, Payments (Stripe, PayPal), OCR, LLMs
 
-% Open source contributions
-\section{Open source contributions}
-\cventry{Jul\,2024}{\href{https://clickhouse.com/}{ClickHouse}}{a real-time analytics DBMS}{}{}{
-    \begin{itemize}
-        \item \href{https://github.com/ClickHouse/ClickHouse/pull/66214}{Allow to create incremental password protected backups}
-    \end{itemize}\leavevmode
-}
-\openup .4em
-\cventry{Aug\,2019}{\href{http://www.proxmark.org/}{proxmark3}}{a powerful general purpose RFID tool}{}{}{
-    \begin{itemize}
-        \item \href{https://github.com/Proxmark/proxmark3/pull/858}{Various PCF7931 improvements}
-    \end{itemize}\leavevmode
-}
-\openup .4em
-\cventry{Jan\,2017}{\href{https://www.winehq.org/}{Wine}}{a compatibility layer to run Windows apps on several POSIX-compliant OSs}{}{}{
-    \begin{itemize}
-        \item \href{https://gitlab.winehq.org/wine/wine/-/commit/b510dccecbfe80c26b030b78b903b38350d41012}{Buffer length check fix}
-    \end{itemize}
-}
-\openup .4em
+\section{Professional Experience}
+\role{Software Engineer}{Ema Health}{Lucca, Italy}{Mar 2026 -- Present}
+\begin{itemize}
+  \item Improved backend code quality, architecture, and delivery practices through senior engineering leadership and robust typed backend patterns.
+  \item Designed and implemented a multi-tenant role-based access control (RBAC) system supporting secure, role-scoped authentication across tenants.
+  \item Engineered privacy-preserving medical-document pipelines and an OCR workflow using locally deployed LLMs to extract structured blood-analysis results.
+\end{itemize}
+\tech{TypeScript, NestJS, Node.js, Go, MongoDB, Flutter, Docker, GCP, Git}
 
-% Education
+\role{Backend Developer / Tech Lead}{Defenda Solutions}{Lucca, Italy}{Dec 2023 -- Mar 2026}
+\begin{itemize}
+  \item Led backend development for large-scale customer data processing, from raw-data parsing and import to analysis and customer-facing insights.
+  \item Designed scalable technical solutions and advised on technology-stack selection for new projects.
+  \item Delivered data pipelines and analytics infrastructure using Go, Elasticsearch, ClickHouse, and MongoDB.
+\end{itemize}
+\tech{Go, Docker, Elasticsearch, ClickHouse, MongoDB, MySQL, Python, Git, OSINT, PHP}
+
+\role{Backend Developer}{Roomless}{Pisa, Italy}{Apr 2022 -- Dec 2023}
+\begin{itemize}
+  \item Led a migration to a serverless microservice architecture to improve scalability and reduce infrastructure costs.
+  \item Built automated paper and electronic invoicing; integrated Stripe, PayPal, refunds, and Stripe Connect supplier payments.
+  \item Developed multi-channel email, SMS, and Telegram notifications for internal and customer communications.
+\end{itemize}
+\tech{TypeScript, Node.js, NestJS, Docker, MySQL, Cypress, AWS, Serverless, Git}
+
+\role{Software Developer}{B\&B Software}{Province of Pisa, Italy}{Jul 2018 -- Apr 2022}
+\begin{itemize}
+  \item Developed a vehicle access-control and parking-payment platform from inception through deployment.
+  \item Delivered enterprise applications for shipping and customs operators, including Italian electronic-invoicing compliance, plus Android inventory applications with barcode scanning.
+\end{itemize}
+\tech{.NET, C\#, Python, Java, Microsoft SQL Server, MySQL, Docker, Git, AWS}
+
+\section{Selected Open Source Contributions}
+\textbf{ClickHouse} --- \href{https://github.com/ClickHouse/ClickHouse/pull/66214}{Incremental password-protected backups} (Jul 2024)\\
+\textbf{Proxmark3} --- \href{https://github.com/Proxmark/proxmark3/pull/858}{PCF7931 improvements} (Aug 2019)\\
+\textbf{Wine} --- \href{https://gitlab.winehq.org/wine/wine/-/commit/b510dccecbfe80c26b030b78b903b38350d41012}{Buffer-length check fix} (Jan 2017)
+
 \section{Education}
-\cventry{2016~-~2021}{Computer Science Studies}{University of Pisa}{Pisa (PI)}{Italy}{}
-\cventry{2011~-~2016}{High school diploma in Computer Science}{I.T.I.S. G. Marconi}{Pontedera (PI)}{Italy}{}
+\textbf{Computer Science Studies}, University of Pisa, Pisa, Italy \hfill 2016 -- 2021\\
+\textbf{High School Diploma in Computer Science}, I.T.I.S. G. Marconi, Pontedera, Italy \hfill 2011 -- 2016
 
-% Languages
-\section{Languages}
-\cvlanguage{\textbf{Italian}}{Native}{}
-\cvlanguage{\textbf{English}}{Proficient}{C1 CEFR self-assessed, B2 CEFR certified}
-\cvlanguage{\textbf{Chinese}}{Beginner}{Currently studying for HSK 1}
-
-% Certifications
-\section{Certifications}
-\cventry{2015}{Preliminary English Test}{Cambridge English}{}{}{}
-
-% Footer
-\fancyfoot[C]{\textit{\footnotesize In compliance with the Italian legislative Decree no. 196 dated 30/06/2003 and Art. 13 of the GDPR (EU Regulation 2016/679), I hereby authorize you to use and process my personal details contained in this document}}
+\section{Languages \& Certification}
+Italian (Native) \;|\; English (C1 self-assessed; B2 Cambridge-certified) \;|\; Chinese (Beginner; studying HSK 1)\\
+Preliminary English Test, Cambridge English \hfill 2015
 
 \end{document}
