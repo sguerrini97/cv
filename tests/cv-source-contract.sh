@@ -39,7 +39,7 @@ if ! grep -Fq '\vspace{0.10em}%' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\makebox[\linewidth][c]{{\scriptsize\textbullet}}\par' main.tex; then
+if ! grep -Fq '\makebox[\linewidth][c]{{\tiny\textbullet}}\par' main.tex; then
   echo 'Missing small centered technology separator' >&2
   status=1
 fi
