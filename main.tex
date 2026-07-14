@@ -9,14 +9,14 @@
 \hypersetup{pdfauthor={Samuele Guerrini}, pdftitle={Samuele Guerrini - Senior Software Engineer}}
 
 \newcommand{\cvheader}[1]{%
-  \begin{center}
-  #1
-  \end{center}
+  {\centering
+  #1\par}%
+  \vspace{0.2em}%
 }
 \newcommand{\cvsection}[1]{%
-  \par\vspace{0.8em}%
+  \par\vspace{0.55em}%
   \noindent{\large\bfseries #1}\par
-  \vspace{0.15em}\hrule\vspace{0.35em}%
+  \vspace{0.10em}\hrule\vspace{0.25em}%
 }
 \newcommand{\role}[4]{%
   \noindent\textbf{#1} \;|\; #2 \;|\; #3\hfill\textbf{#4}\par
@@ -24,7 +24,7 @@
 \newcommand{\tech}[1]{%
   \textbf{Technologies:} #1\par
   \vspace{0.10em}%
-  \noindent\makebox[\linewidth][c]{\textbullet}\par
+  \noindent\makebox[\linewidth][c]{{\scriptsize\textbullet}}\par
   \vspace{0.20em}%
 }
 \newcommand{\techlast}[1]{%

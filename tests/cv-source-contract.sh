@@ -14,13 +14,13 @@ if ! grep -Fq 'barcode scanning and damage detection' main.tex; then
   status=1
 fi
 
-if ! awk 'previous == "\\newpage" && $0 == "\\cvsection{Education}" { found = 1 } { previous = $0 } END { exit !found }' main.tex; then
-  echo 'Education must start on a new page' >&2
+if grep -Fq '\newpage' main.tex; then
+  echo 'Languages must remain eligible for page one' >&2
   status=1
 fi
 
-if ! grep -Fq '\newcommand{\cvheader}[1]{%' main.tex; then
-  echo 'Missing centered header macro' >&2
+if ! grep -Fq '{\centering' main.tex; then
+  echo 'Missing compact centered header' >&2
   status=1
 fi
 
@@ -39,8 +39,18 @@ if ! grep -Fq '\vspace{0.10em}%' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\makebox[\linewidth][c]{\textbullet}\par' main.tex; then
-  echo 'Missing centered technology separator' >&2
+if ! grep -Fq '\makebox[\linewidth][c]{{\scriptsize\textbullet}}\par' main.tex; then
+  echo 'Missing small centered technology separator' >&2
+  status=1
+fi
+
+if grep -Fq '\enlargethispage' main.tex; then
+  echo 'Page extension must not overlap the footer' >&2
+  status=1
+fi
+
+if ! grep -Fq '\par\vspace{0.55em}%' main.tex; then
+  echo 'Missing compact section spacing' >&2
   status=1
 fi
 
