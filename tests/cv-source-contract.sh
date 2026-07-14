@@ -34,8 +34,18 @@ if ! grep -Fq '\vspace{-0.25em}%' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\makebox[\linewidth][c]{\rule{0.20\linewidth}{0.25pt}}\par' main.tex; then
-  echo 'Missing centered technology divider' >&2
+if ! grep -Fq '\vspace{0.10em}%' main.tex; then
+  echo 'Missing compact pre-separator spacing' >&2
+  status=1
+fi
+
+if ! grep -Fq '\makebox[\linewidth][c]{\textbullet}\par' main.tex; then
+  echo 'Missing centered technology separator' >&2
+  status=1
+fi
+
+if ! grep -Fq '\vspace{0.20em}%' main.tex; then
+  echo 'Missing compact post-separator spacing' >&2
   status=1
 fi
 
