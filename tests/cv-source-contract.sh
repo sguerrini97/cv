@@ -34,13 +34,8 @@ if ! grep -Fq '\vspace{-0.25em}%' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\vspace{0.10em}%' main.tex; then
-  echo 'Missing compact pre-separator spacing' >&2
-  status=1
-fi
-
-if ! grep -Fq '\makebox[\linewidth][c]{{\tiny\textbullet}}\par' main.tex; then
-  echo 'Missing small centered technology separator' >&2
+if grep -Fq '\makebox[\linewidth][c]{{\tiny\textbullet}}\par' main.tex; then
+  echo 'Decorative technology separator should not appear' >&2
   status=1
 fi
 

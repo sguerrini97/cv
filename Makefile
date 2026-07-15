@@ -1,6 +1,8 @@
 OUTPUT_DIRECTORY=out
 SRC=main.tex
 
+.PHONY: all pdf clean test
+
 all: pdf
 
 pdf: out/
@@ -8,6 +10,9 @@ pdf: out/
 
 out/:
 	mkdir out
+
+test:
+	bash tests/cv-source-contract.sh
 
 clean:
 	rm -rfv ${OUTPUT_DIRECTORY}/*
