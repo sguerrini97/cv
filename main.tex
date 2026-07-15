@@ -19,16 +19,10 @@
   \vspace{0.10em}\hrule\vspace{0.25em}%
 }
 \newcommand{\role}[4]{%
-  \noindent\textbf{#1} \;\; #2 \;\; #3\hfill\textbf{#4}\par
+  \noindent\textbf{#1}, \;\; #2, \;\; #3\hfill\textbf{#4}\par
 }
 \newcommand{\tech}[1]{%
-  \textbf{Technologies:} #1\par
-  \vspace{0.10em}%
-  \noindent\makebox[\linewidth][c]{{\tiny\textbullet}}\par
-  \vspace{0.20em}%
-}
-\newcommand{\techlast}[1]{%
-  \textbf{Technologies:} #1\par
+  Technologies: #1\par
   \vspace{0.20em}%
 }
 \newenvironment{cvitems}{%
@@ -61,10 +55,10 @@ Senior Software Engineer with 8+ years of experience delivering scalable backend
 \textbf{Languages:} Go (3 yrs), TypeScript (8 yrs), Python (8 yrs), C\#, Java, PHP\\
 \textbf{Backend \& APIs:} Node.js, NestJS, .NET, REST APIs, Microservices, RBAC, Multi-tenant Systems\\
 \textbf{Data \& Search:} MongoDB, PostgreSQL, MySQL, MS SQL Server, ClickHouse, Elasticsearch, Data Pipelines, S3\\
-\textbf{Cloud \& DevOps:} AWS, GCP, Docker, Serverless, CI/CD, Git, GitHub Actions, Jenkins, Lambda, Cloud Functions, Cloud Runner, ECS, Firebase\\
+\textbf{Cloud \& DevOps:} Docker, Serverless, CI/CD, Git, GitHub Actions, Jenkins, AWS, Lambda, ECS, GCP, Cloud Run, Firebase\\
 \textbf{Integrations \& Domains:} Stripe, Stripe Connect, PayPal, Healthcare Data Processing, OCR, Local LLMs\\
 \textbf{Application Security:} OWASP Top 10, Secure Code Review, Vulnerability Remediation\\
-\textbf{Leadership \& Practices:} Technical Leadership, System Architecture \& Design, Code Review, Stack Selection, Technical Decision-Making, Cross-functional Collaboration
+\textbf{Leadership \& Practices:} System Architecture \& Design, Technical Decision-Making, Code Review, Stack Selection, Cross-functional Collaboration
 
 \cvsection{Professional Experience}
 \role{Senior Software Engineer}{Ema Health}{Lucca, Italy}{Mar 2026 - Present}
@@ -96,7 +90,7 @@ Senior Software Engineer with 8+ years of experience delivering scalable backend
   \item Developed a vehicle access-control and parking-payment platform from inception through deployment at multiple locations.
   \item Delivered enterprise applications for shipping and customs operators, including Italian electronic-invoicing compliance, plus Android inventory applications with barcode scanning and damage detection.
 \end{cvitems}
-\techlast{.NET, C\#, Python, Java, TypeScript, Microsoft SQL Server, MySQL, Docker, Git, AWS}
+\tech{.NET, C\#, Python, Java, TypeScript, Microsoft SQL Server, MySQL, Docker, Git, AWS}
 
 \cvsection{Selected Open Source Contributions}
 \textbf{ClickHouse}: \href{https://github.com/ClickHouse/ClickHouse/pull/66214}{Incremental password-protected backups} (Jul 2024)\\
