@@ -14,6 +14,16 @@ if ! grep -Fq 'barcode scanning and damage detection' main.tex; then
   status=1
 fi
 
+if grep -Fq '1M+ customer records' main.tex; then
+  echo 'Misleading Defenda customer-record claim should not appear' >&2
+  status=1
+fi
+
+if ! grep -Fq 'parsed 2M+ rows daily and stored 12B+ unique records' main.tex; then
+  echo 'Missing Defenda data-scale metrics' >&2
+  status=1
+fi
+
 if grep -Fq '\newpage' main.tex; then
   echo 'Languages must remain eligible for page one' >&2
   status=1
@@ -29,13 +39,38 @@ if ! grep -Fq '\textbf{#1} \;|\; #2 \;|\; #3\hfill\textbf{#4}\par' main.tex; the
   status=1
 fi
 
-if ! grep -Fq '\vspace{-0.25em}%' main.tex; then
-  echo 'Missing compact bullet-list spacing' >&2
+if ! grep -Fq '\vspace{-0.40em}%' main.tex; then
+  echo 'Missing compact spacing before bullet lists' >&2
   status=1
 fi
 
-if grep -Fq '\makebox[\linewidth][c]{{\tiny\textbullet}}\par' main.tex; then
-  echo 'Decorative technology separator should not appear' >&2
+if ! grep -Fq '\end{itemize}\vspace{-0.35em}%' main.tex; then
+  echo 'Missing compact spacing after bullet lists' >&2
+  status=1
+fi
+
+if ! grep -Fq '\setlength{\leftmargini}{1.00em}' main.tex; then
+  echo 'Missing balanced bullet-list indent' >&2
+  status=1
+fi
+
+if grep -Fqx '  \hrule' main.tex; then
+  echo 'Full-width experience separator should not appear' >&2
+  status=1
+fi
+
+if ! grep -Fq '\noindent\makebox[\linewidth][c]{{\tiny\textbullet}}\par' main.tex; then
+  echo 'Missing centered experience separator' >&2
+  status=1
+fi
+
+if ! grep -Fq '\renewcommand{\labelitemi}{{\small\textbullet}}' main.tex; then
+  echo 'Missing reduced list-bullet size' >&2
+  status=1
+fi
+
+if ! grep -Fq '\setlength{\itemsep}{-0.40em}' main.tex; then
+  echo 'Missing compact list-item spacing' >&2
   status=1
 fi
 

@@ -23,6 +23,8 @@
 }
 \newcommand{\tech}[1]{%
   \textbf{Technologies:} #1\par
+  \vspace{0.10em}%
+  \noindent\makebox[\linewidth][c]{{\tiny\textbullet}}\par
   \vspace{0.20em}%
 }
 \newcommand{\techlast}[1]{%
@@ -30,15 +32,16 @@
   \vspace{0.20em}%
 }
 \newenvironment{cvitems}{%
-  \vspace{-0.25em}%
+  \vspace{-0.40em}%
+  \setlength{\leftmargini}{1.00em}%
+  \renewcommand{\labelitemi}{{\small\textbullet}}%
   \begin{itemize}
-  \setlength{\leftmargin}{1.15em}
-  \setlength{\itemsep}{0pt}
+  \setlength{\itemsep}{-0.40em}
   \setlength{\topsep}{0pt}
   \setlength{\partopsep}{0pt}
   \setlength{\parsep}{0pt}%
 }{%
-  \end{itemize}\vspace{-0.1em}%
+  \end{itemize}\vspace{-0.35em}%
 }
 
 \begin{document}
@@ -57,9 +60,9 @@ Senior Software Engineer with 8+ years of experience delivering scalable backend
 \cvsection{Technical Skills}
 \textbf{Languages:} Go, TypeScript, Python, C\#, Java, PHP\\
 \textbf{Backend \& APIs:} Node.js, NestJS, .NET, REST APIs, Microservices, RBAC, Multi-tenant Systems\\
-\textbf{Data \& Search:} MongoDB, MySQL, Microsoft SQL Server, ClickHouse, Elasticsearch, Data Pipelines\\
+\textbf{Data \& Search:} MongoDB, PostgreSQL, MySQL, MS SQL Server, ClickHouse, Elasticsearch, Data Pipelines\\
 \textbf{Cloud \& DevOps:} Amazon Web Services (AWS), Google Cloud Platform (GCP), Docker, Serverless, CI/CD, Git\\
-\textbf{Integrations \& Domains:} Stripe, Stripe Connect, PayPal, Healthcare Data Processing, OCR, Local LLM Deployment
+\textbf{Integrations \& Domains:} Stripe, Stripe Connect, PayPal, Healthcare Data Processing, OCR, Local LLMs
 
 \cvsection{Professional Experience}
 \role{Software Engineer}{Ema Health}{Lucca, Italy}{Mar 2026 - Present}
@@ -72,16 +75,16 @@ Senior Software Engineer with 8+ years of experience delivering scalable backend
 
 \role{Backend Developer / Tech Lead}{Defenda Solutions}{Lucca, Italy}{Dec 2023 - Mar 2026}
 \begin{cvitems}
-  \item Led backend development for large-scale customer data processing, from raw-data parsing and import to analysis and customer-facing insights for 1M+ customer records.
-  \item Designed scalable technical solutions and advised on technology-stack selection for new projects.
-  \item Delivered data pipelines and analytics infrastructure using Go, Elasticsearch, ClickHouse, and MongoDB, reducing analytics query latency by 50\%.
+  \item Led backend development for large-scale customer data processing, from raw-data parsing and import to analysis and customer-facing insights.
+  \item Contributed to the design and technology-stack selection of data-processing systems that parsed 2M+ rows daily and stored 12B+ unique records.
+  \item Delivered data pipelines and analytics infrastructure using Go, Elasticsearch, ClickHouse, and MongoDB, reducing ingestion times and analytics query latency by 70\%.
 \end{cvitems}
 \tech{Go, Docker, Elasticsearch, ClickHouse, MongoDB, MySQL, Python, Git, OSINT, PHP}
 
 \role{Backend Developer}{Roomless}{Pisa, Italy}{Apr 2022 - Dec 2023}
 \begin{cvitems}
-  \item Led a migration to a serverless microservice architecture, improving scalability and reducing infrastructure costs by 30\%.
-  \item Built automated paper and electronic invoicing for 1,000+ invoices annually; integrated Stripe, PayPal, refunds, and Stripe Connect supplier payments.
+  \item Led migration to serverless microservice architecture, improving scalability and reducing costs by 30\%, handling 200,000+ monthly active users.
+  \item Built automated paper and electronic invoicing for 1,000+ invoices monthly; integrated Stripe, PayPal, refunds, and Stripe Connect supplier payments.
   \item Developed multi-channel email, SMS, and Telegram notifications for internal and customer communications.
 \end{cvitems}
 \tech{TypeScript, Node.js, NestJS, Docker, MySQL, Cypress, AWS, Serverless, Git}

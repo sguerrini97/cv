@@ -11,8 +11,9 @@ pdf: out/
 out/:
 	mkdir out
 
-test:
+test: pdf
 	bash tests/cv-source-contract.sh
+	pdfinfo ${OUTPUT_DIRECTORY}/main.pdf | grep -Eq '^Pages:[[:space:]]+1$$'
 
 clean:
 	rm -rfv ${OUTPUT_DIRECTORY}/*
