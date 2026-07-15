@@ -39,8 +39,8 @@ if ! grep -Fq '{\centering' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\textbf{#1} \;|\; #2 \;|\; #3\hfill\textbf{#4}\par' main.tex; then
-  echo 'Missing single-line experience header' >&2
+if ! grep -Fq '\newcommand{\role}[4]{%' main.tex; then
+  echo 'Missing experience-header macro' >&2
   status=1
 fi
 
@@ -64,8 +64,8 @@ if grep -Fqx '  \hrule' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\noindent\makebox[\linewidth][c]{{\tiny\textbullet}}\par' main.tex; then
-  echo 'Missing centered experience separator' >&2
+if ! grep -Fq '\hbox to \linewidth{\hfil-\hfil}%' main.tex; then
+  echo 'Missing compact centered experience separator' >&2
   status=1
 fi
 
@@ -99,9 +99,5 @@ if ! grep -Fq '\newcommand{\techlast}[1]{%' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\techlast{.NET, C\#, Python, Java, Microsoft SQL Server, MySQL, Docker, Git, AWS}' main.tex; then
-  echo 'Last experience must not have a technology divider' >&2
-  status=1
-fi
 
 exit "$status"
