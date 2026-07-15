@@ -19,8 +19,13 @@ if grep -Fq '1M+ customer records' main.tex; then
   status=1
 fi
 
-if ! grep -Fq 'parsed 2M+ rows daily and stored 12B+ unique records' main.tex; then
-  echo 'Missing Defenda data-scale metrics' >&2
+if ! grep -Fq 'OWASP Top 10, Secure Code Review, Vulnerability Remediation' main.tex; then
+  echo 'Missing application-security skills' >&2
+  status=1
+fi
+
+if ! grep -Fq 'Contributed to data-system design and stack selection for 2M+ rows/day and 12B+ stored unique records; performed OWASP-based code reviews and remediation.' main.tex; then
+  echo 'Missing Defenda application-security contribution' >&2
   status=1
 fi
 
