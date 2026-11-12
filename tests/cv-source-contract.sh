@@ -44,13 +44,13 @@ if ! grep -Fq '\newcommand{\role}[4]{%' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\vspace{-0.40em}%' main.tex; then
-  echo 'Missing compact spacing before bullet lists' >&2
+if ! grep -Fq '\vspace{0.20em}%' main.tex; then
+  echo 'Missing spacing before bullet lists' >&2
   status=1
 fi
 
-if ! grep -Fq '\end{itemize}\vspace{-0.35em}%' main.tex; then
-  echo 'Missing compact spacing after bullet lists' >&2
+if ! grep -Fq '\end{itemize}\vspace{0.20em}%' main.tex; then
+  echo 'Missing spacing after bullet lists' >&2
   status=1
 fi
 
@@ -69,8 +69,8 @@ if ! grep -Fq '\renewcommand{\labelitemi}{{\small\textbullet}}' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\setlength{\itemsep}{-0.40em}' main.tex; then
-  echo 'Missing compact list-item spacing' >&2
+if ! grep -Fq '\itemsep 0.10em' main.tex; then
+  echo 'Missing list-item spacing' >&2
   status=1
 fi
 
@@ -79,12 +79,12 @@ if grep -Fq '\enlargethispage' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\par\vspace{0.35em}%' main.tex; then
-  echo 'Missing compact section spacing' >&2
+if ! grep -Fq '\par\vspace{0.85em}%' main.tex; then
+  echo 'Missing section spacing' >&2
   status=1
 fi
 
-if ! grep -Fq '\vspace{0.40em}%' main.tex; then
+if ! grep -Fq '\vspace{0.80em}%' main.tex; then
   echo 'Missing spacing after technology line' >&2
   status=1
 fi

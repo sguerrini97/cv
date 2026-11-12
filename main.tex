@@ -2,108 +2,118 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=0.45in]{geometry}
+\usepackage[default]{sourcesanspro}
+\usepackage[hmargin=0.62in,vmargin=0.50in]{geometry}
 \usepackage[hidelinks]{hyperref}
 
+% Keep the text layer extractable by ATS parsers.
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\pagestyle{empty}
+\raggedright
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\linespread{1.04}
 \setlength{\parindent}{0pt}
 \hypersetup{pdfauthor={Samuele Guerrini}, pdftitle={Samuele Guerrini - Senior Software Engineer}}
 
+\newcommand{\cvsep}{\enspace\textperiodcentered\enspace}
 \newcommand{\cvheader}[1]{%
   {\centering
   #1\par}%
   \vspace{0.2em}%
 }
 \newcommand{\cvsection}[1]{%
-  \par\vspace{0.35em}%
+  \par\vspace{0.85em}%
   \noindent{\large\bfseries #1}\par
-  \vspace{0.10em}\hrule\vspace{0.25em}%
+  \vspace{0.20em}\hrule\vspace{0.55em}%
 }
 \newcommand{\role}[4]{%
-  \noindent\textbf{#1}, \;\; #2, \;\; #3\hfill\textbf{#4}\par
+  \noindent\textbf{#1}\cvsep #2\cvsep #3\hfill #4\par
 }
 \newcommand{\tech}[1]{%
-  Technologies: #1\par
-  \vspace{0.40em}%
+  {\small\textit{Stack:} #1\par}
+  \vspace{0.80em}%
 }
+\newcommand{\techlast}[1]{%
+  {\small\textit{Stack:} #1\par}
+}
+% List spacing is set where LaTeX reads it (\@listi), so no negative
+% \vspace compensation is needed around the lists.
+\makeatletter
+\renewcommand{\@listi}{%
+  \leftmargin\leftmargini
+  \topsep 0pt \partopsep 0pt \parsep 0pt \itemsep 0.10em}
+\let\@listI\@listi % \normalsize restores \@listi from \@listI
+\makeatother
 \newenvironment{cvitems}{%
-  \vspace{-0.40em}%
+  \vspace{0.20em}%
   \setlength{\leftmargini}{1.00em}%
   \renewcommand{\labelitemi}{{\small\textbullet}}%
-  \begin{itemize}
-  \setlength{\itemsep}{-0.40em}
-  \setlength{\topsep}{0pt}
-  \setlength{\partopsep}{0pt}
-  \setlength{\parsep}{0pt}%
+  \begin{itemize}%
 }{%
-  \end{itemize}\vspace{-0.35em}%
+  \end{itemize}\vspace{0.20em}%
 }
 
 \begin{document}
 
 \cvheader{%
-  {\LARGE\textbf{Samuele Guerrini}}\\[-0.1em]
-  {\large Senior Software Engineer}\\[0.25em]
-  Pisa, Italy, \href{tel:+393290159627}{(+39) 329 015 9627}, \href{mailto:sguerrini97@protonmail.com}{sguerrini97@protonmail.com}\\
-  LinkedIn: \href{https://linkedin.com/in/guerrinisamuele/}{https://linkedin.com/in/guerrinisamuele}
-  GitHub: \href{https://github.com/sguerrini97}{https://github.com/sguerrini97}
+  {\huge\textbf{Samuele Guerrini}}\\[0.20em]
+  {\large Senior Software Engineer}\\[0.35em]
+  Pisa, Italy\cvsep \href{tel:+393290159627}{(+39) 329 015 9627}\cvsep \href{mailto:sguerrini97@protonmail.com}{sguerrini97@protonmail.com}\\
+  \href{https://linkedin.com/in/guerrinisamuele/}{linkedin.com/in/guerrinisamuele}\cvsep \href{https://github.com/sguerrini97}{github.com/sguerrini97}
 }
 
 \cvsection{Professional Summary}
-Senior Software Engineer with 8+ years of experience building scalable backend systems, data pipelines, and cloud-native services. Strong in TypeScript, Go, distributed architectures, data privacy, observability, and technical leadership, with domain experience in healthcare, cyber threat intelligence, and payments.
-
-\cvsection{Skills}
-\textbf{Languages:} TypeScript (8 yrs), Python (8 yrs), Go (3 yrs), C\#, Java, PHP\\
-\textbf{Backend \& APIs:} Node.js, NestJS, .NET, REST APIs, Microservices, RBAC, Multi-tenant Systems\\
-\textbf{Data \& Search:} MongoDB, PostgreSQL, MySQL, MS SQL Server, ClickHouse, Elasticsearch, Data Pipelines, S3\\
-\textbf{Cloud \& DevOps:} AWS (Lambda, ECS, Fargate, EC2), GCP (Cloud Run, Pub/Sub, Firebase), Docker, Terraform, Serverless, CI/CD, GitHub Actions, Jenkins, Git, OpenTelemetry, Grafana\\
-\textbf{Integrations \& Domains:} Stripe, Stripe Connect, PayPal, Healthcare Data, OCR, LLM Agents, Local LLMs\\
-\textbf{Security:} OWASP Top 10, Secure Code Review, Vulnerability Remediation, Encryption, Audit Logging, GDPR\\
-\textbf{Leadership \& Practices:} System Design, Technical Leadership, Stack Selection, Code Review, Cross-team Collaboration
+Senior Software Engineer with 8+ years of experience building scalable backend systems, data pipelines, and cloud-native services in TypeScript, Go, and Python. Technical lead on data-intensive platforms, with domain experience in healthcare, cyber threat intelligence, and payments.
 
 \cvsection{Professional Experience}
 \role{Senior Software Engineer}{Ema Health}{Lucca, Italy}{Mar 2026 - Present}
 \begin{cvitems}
-  \item Raised code quality, architecture, and delivery practices across 5 backend services; migrated the core NestJS API to strict TypeScript 7, SWC builds, and type-aware Oxlint, cutting full-repository lint time from about 17 s to 1 s.
   \item Designed multi-tenant role-based access control (RBAC) with grant-based data visibility, cross-organization authorization, and audited admin impersonation.
-  \item Designed a GDPR-oriented audit trail for data reads, mutations, and erasures (Pub/Sub to Cloud Storage) and encrypted sensitive health-questionnaire answers with MongoDB Queryable Encryption and Cloud KMS.
-  \item Rebuilt the booking lifecycle around a centralized state-transition policy with transactional updates and electronic document signing, shipping the related back-office features end-to-end (API and Flutter web UI).
-  \item Introduced OpenTelemetry traces, metrics, and logs with Grafana dashboards; built an LLM agent (Python, AWS Fargate, Terraform) that reviews cloud logs and performance metrics daily and files triaged incident reports.
-  \item Engineered privacy-preserving medical-document pipelines and an OCR workflow using locally deployed LLMs.
+  \item Designed and built a GDPR-oriented audit trail for data reads, mutations, and erasures, and encrypted sensitive health data with MongoDB Queryable Encryption.
+  \item Engineered privacy-preserving medical-document and OCR pipelines on locally deployed LLMs, and an LLM agent that triages cloud logs and performance metrics daily.
+  \item Raised code quality and delivery practices across 5 backend services with strict TypeScript, linting cut from 17 s to 1 s, and OpenTelemetry traces, metrics, and logs.
 \end{cvitems}
-\tech{TypeScript, NestJS, Node.js, MongoDB, Python, Go, Flutter, OpenTelemetry, Terraform, Docker, GCP, AWS}
+\tech{TypeScript, NestJS, Node.js, MongoDB, Python, Go, Flutter, OpenTelemetry, Terraform, GCP, AWS}
 
 \role{Backend Developer / Tech Lead}{Defenda Solutions}{Lucca, Italy}{Dec 2023 - Mar 2026}
 \begin{cvitems}
-  \item Led backend development of a cyber threat intelligence platform aggregating dark-web and other OSINT sources to surface customer exposure and data breaches, from raw-data ingestion to customer-facing insights.
+  \item Led backend development of a cyber threat intelligence platform aggregating dark-web and other OSINT sources to surface customer exposure and data breaches.
   \item Contributed to data-system design and stack selection for 2M+ rows/day and 12B+ stored unique records; performed OWASP-based code reviews and remediation.
   \item Delivered data pipelines and analytics infrastructure with Go, Elasticsearch, ClickHouse, and MongoDB, reducing ingestion times and analytics query latency by 70\%.
 \end{cvitems}
-\tech{Go, Docker, Elasticsearch, ClickHouse, MongoDB, MySQL, PostgreSQL, Python, Git, OSINT, PHP}
+\tech{Go, Elasticsearch, ClickHouse, MongoDB, PostgreSQL, MySQL, Python, PHP, Docker}
 
 \role{Backend Developer}{Roomless}{Pisa, Italy}{Apr 2022 - Dec 2023}
 \begin{cvitems}
   \item Led migration to a serverless microservice architecture serving 200,000+ monthly active users, improving scalability and reducing costs by 30\%.
   \item Built automated paper and electronic invoicing, Stripe, PayPal, and Stripe Connect supplier payments and refunds, and multi-channel email, SMS, and Telegram notifications.
 \end{cvitems}
-\tech{TypeScript, Node.js, NestJS, Python, Docker, MySQL, Cypress, AWS, Serverless, Git}
+\tech{TypeScript, Node.js, NestJS, Python, MySQL, AWS, Serverless, Docker, Cypress}
 
 \role{Software Developer}{B\&B Software}{Province of Pisa, Italy}{Jul 2018 - Apr 2022}
 \begin{cvitems}
-  \item Developed a vehicle access-control and parking-payment platform from inception through deployment at multiple sites.
+  \item Developed a vehicle access-control and parking-payment platform from inception to multi-site deployment.
   \item Delivered enterprise applications for shipping and customs operators with Italian e-invoicing compliance, and Android inventory apps with barcode scanning and damage detection.
 \end{cvitems}
-\tech{.NET, C\#, Python, Java, TypeScript, Microsoft SQL Server, MySQL, Docker, Git, AWS}
+\techlast{.NET, C\#, Java, Python, TypeScript, Microsoft SQL Server, MySQL, Docker, AWS}
 
 \cvsection{Selected Open Source Contributions}
-\textbf{ClickHouse}: \href{https://github.com/ClickHouse/ClickHouse/pull/66214}{Incremental password-protected backups} \hfill Jul 2024\\
-\textbf{Proxmark3}: \href{https://github.com/Proxmark/proxmark3/pull/858}{PCF7931 improvements} \hfill Aug 2019\\
-\textbf{Wine}: \href{https://gitlab.winehq.org/wine/wine/-/commit/b510dccecbfe80c26b030b78b903b38350d41012}{Buffer-length check fix} \hfill Jan 2017
+\textbf{ClickHouse}\cvsep \href{https://github.com/ClickHouse/ClickHouse/pull/66214}{Incremental password-protected backups} \hfill Jul 2024\\
+\textbf{Proxmark3}\cvsep \href{https://github.com/Proxmark/proxmark3/pull/858}{PCF7931 improvements} \hfill Aug 2019\\
+\textbf{Wine}\cvsep \href{https://gitlab.winehq.org/wine/wine/-/commit/b510dccecbfe80c26b030b78b903b38350d41012}{Buffer-length check fix} \hfill Jan 2017
 
-\cvsection{Education}
-\textbf{Computer Science}, University of Pisa, Pisa, Italy (coursework completed, did not graduate) \hfill 2016 - 2021\\
-\textbf{High School Diploma in Computer Science}, I.T.I.S. G. Marconi, Pontedera, Italy \hfill 2011 - 2016
+\cvsection{Skills}
+\textbf{Languages:} TypeScript (8 yrs), Python (8 yrs), Go (3 yrs), C\#, Java, PHP\\
+\textbf{Backend \& Data:} Node.js, NestJS, .NET, Microservices, MongoDB, PostgreSQL, MySQL, ClickHouse, Elasticsearch\\
+\textbf{Cloud \& DevOps:} AWS (Lambda, ECS), GCP (Cloud Run, Pub/Sub), Docker, Terraform, GitHub Actions, OpenTelemetry\\
+\textbf{Security:} OWASP Top 10, Secure Code Review, Vulnerability Remediation, RBAC, Encryption, Audit Logging, GDPR
 
-\cvsection{Languages \& Certification}
-Italian (Native), English (C1 self-assessed; Cambridge B1 Preliminary, 2015), Chinese (Beginner, studying HSK 1)
+\cvsection{Education \& Languages}
+\textbf{Computer Science}, University of Pisa, Italy (coursework completed, did not graduate) \hfill 2016 - 2021\\
+\textbf{High School Diploma in Computer Science}, I.T.I.S. G. Marconi, Pontedera, Italy \hfill 2011 - 2016\\
+\textbf{Languages:} Italian (Native), English (C1 self-assessed; Cambridge B1 Preliminary, 2015), Chinese (studying HSK 1)
 
 \end{document}
