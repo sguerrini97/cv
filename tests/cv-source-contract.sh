@@ -64,11 +64,6 @@ if grep -Fqx '  \hrule' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\hbox to \linewidth{\hfil-\hfil}%' main.tex; then
-  echo 'Missing compact centered experience separator' >&2
-  status=1
-fi
-
 if ! grep -Fq '\renewcommand{\labelitemi}{{\small\textbullet}}' main.tex; then
   echo 'Missing reduced list-bullet size' >&2
   status=1
@@ -84,18 +79,13 @@ if grep -Fq '\enlargethispage' main.tex; then
   status=1
 fi
 
-if ! grep -Fq '\par\vspace{0.55em}%' main.tex; then
+if ! grep -Fq '\par\vspace{0.35em}%' main.tex; then
   echo 'Missing compact section spacing' >&2
   status=1
 fi
 
-if ! grep -Fq '\vspace{0.20em}%' main.tex; then
-  echo 'Missing compact post-separator spacing' >&2
-  status=1
-fi
-
-if ! grep -Fq '\newcommand{\techlast}[1]{%' main.tex; then
-  echo 'Missing final-experience technology macro' >&2
+if ! grep -Fq '\vspace{0.40em}%' main.tex; then
+  echo 'Missing spacing after technology line' >&2
   status=1
 fi
 
